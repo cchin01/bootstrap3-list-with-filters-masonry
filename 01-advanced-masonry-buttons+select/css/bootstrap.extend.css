@@ -1,0 +1,71 @@
+/*=======================================================
+┌┐ ┌─┐┌─┐┌┬┐┌─┐┌┬┐┬─┐┌─┐┌─┐  ┌─┐┬  ┬┌─┐┬─┐┬─┐┬┌┬┐┌─┐┌─┐
+├┴┐│ ││ │ │ └─┐ │ ├┬┘├─┤├─┘  │ │└┐┌┘├┤ ├┬┘├┬┘│ ││├┤ └─┐
+└─┘└─┘└─┘ ┴ └─┘ ┴ ┴└─┴ ┴┴    └─┘ └┘ └─┘┴└─┴└─┴─┴┘└─┘└─┘
+=========================================================*/
+.img-responsive{ min-width: 100%; width:100%; }
+.center-block{ float: none; margin:0 auto; }
+
+.modal-backdrop{ z-index: 10; }
+.modal-dialog{ z-index: 11; }
+.form-control:focus{ 
+    border-color: #AAAAAA;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(94, 94, 94, 0.30);
+    outline: transparent !important;
+}
+.text-center{ text-align: center !important; }
+.text-left{ text-align: left !important; }
+.text-right{ text-align: right !important; }
+
+
+/*DROPDOWN SHOW ON HOVER*/
+.dropdown:hover .dropdown-menu { display: block; }
+
+
+/* Specific cols for landscape in mobile */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .col-xsl-1{ width: 8.333333%; float: left; } /* (1 / 12 columns) = 0.0833 * 100 = 8.333333333% */
+    .col-xsl-2{ width: 16.666666%; float: left; }
+    .col-xsl-3{ width: 25%; float: left; }
+    .col-xsl-4{ width: 33.333333%; float: left; }
+	.col-xsl-5{ width: 41.666666%; float: left; }
+	.col-xsl-6{ width: 50%; float: left; }
+	.col-xsl-7{ width: 58.333333%; float: left; }
+	.col-xsl-8{ width: 66.666666%; float: left; }
+    .col-xsl-9{ width: 75%; float: left; }
+	.col-xsl-10{ width: 83.333333%; float: left; }
+	.col-xsl-12{ width: 100%; float: left; }
+}
+
+/*Five Columns*/
+.col-xs-fifth,
+.col-sm-fifth,
+.col-md-fifth,
+.col-lg-fifth {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.col-xs-fifth {
+    width: 20%;
+    float: left;
+}
+@media (min-width: 768px) {
+.col-sm-fifth {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-fifth {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-fifth {
+        width: 20%;
+        float: left;
+    }
+}

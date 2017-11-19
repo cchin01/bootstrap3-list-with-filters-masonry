@@ -1,0 +1,32 @@
+<script src="plugins/jets/jets.min.js"></script>
+
+
+<input class="form-control mt15" id="jetsSearch" type="search" placeholder="Buscar">
+
+
+<div id="jetsContent">
+	<!-- Debe ir envuelto en este div -->
+	<div>
+		elemento 01
+		elemento 02
+		elemento 03
+		...
+	</div>
+</div>
+
+
+<script>
+    $(function(){
+	var jets = new Jets({
+	  searchTag: '#jetsSearch',
+	  contentTag: '#jetsContent',
+          diacriticsMap: { //Agregar soporte para acentos
+		  a: "ÁÀÃÂÄáàãâä",
+		  e: "ÉÈÊËéèêë",
+		  i: "ÍÌÎÏíìîï",
+		  o: "ÓÒÕÔÖóòõôö",
+		  u: "ÚÙÛÜúùûü"
+          }
+	});
+});
+</script>

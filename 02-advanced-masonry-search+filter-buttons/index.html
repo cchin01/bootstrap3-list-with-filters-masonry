@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<title>Items Library</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><!-- Viewport Restrict Zoom -->
+
+	<script src="vendors/jquery/jquery-1.11.2.min.js"></script>
+	<link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="vendors/bootstrap/bootstrap.extend.css">
+	<script src="vendors/bootstrap/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="icons/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/utilities.css">
+
+	<style>
+		.img-responsive{ width: 100%; }
+		.mt30{ margin-top: 30px; }
+		.mb30{ margin-bottom: 30px; }
+		.grid-item{ margin-bottom: 30px; }
+	</style>
+
+
+
+	<!-- Search: Jets -->
+	<script src="vendors/jets/jets.js"></script>
+	<script>
+	    $(function(){
+		var jets = new Jets({
+		  addImportant: true,
+		  searchTag: '#jetsSearch',
+		  contentTag: '#grid-wrapper',
+	          diacriticsMap: { //Agregar soporte para acentos
+			  a: "ÁÀÃÂÄáàãâä",
+			  e: "ÉÈÊËéèêë",
+			  i: "ÍÌÎÏíìîï",
+			  o: "ÓÒÕÔÖóòõôö",
+			  u: "ÚÙÛÜúùûü"
+	          }
+		});
+	});
+	</script>
+
+
+	<!-- Masonry -->
+	<script type="text/javascript" src="vendors/masonry-filters/javascripts/imagesloaded.js"></script>
+	<script type="text/javascript" src="vendors/masonry-filters/javascripts/masonry-3.1.4.js"></script>
+	<script type="text/javascript" src="vendors/masonry-filters/javascripts/masonry.filter.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var self = $("#grid-wrapper");
+            self.imagesLoaded(function () {
+                self.masonry({
+                    gutterWidth: 15,
+                    isAnimated: true,
+                    itemSelector: ".grid-item"
+                });
+            });
+
+            $(".filters .btn").click(function(e) {
+                e.preventDefault();
+
+                var filter = $(this).attr("data-filter");
+
+                self.masonryFilter({
+                    filter: function () {
+                        if (!filter) return true;
+                        return $(this).attr("data-filter") == filter;
+                    }
+                });
+            });
+        });
+    </script>
+
+	<script>
+	    $(function(){
+
+	        //Buttons Filter
+            $(".filters .btn").click(function(e) {
+                e.preventDefault();
+                var filter = $(this).attr("data-filter");
+                console.log(filter);
+                $("#grid-wrapper").masonryFilter({
+                    filter: function () {
+                        if (!filter) return true;
+                        return $(this).hasClass(filter);
+                    }
+                });
+            });
+	    });
+	</script>
+
+</head>
+<body>
+	<div class="container">
+	    	
+    	<!-- Title -->
+        <div class="row mb30">
+            <div class="col-md-12">
+            	<h2><img src="images/logo.png" style="max-width: 160px;"> &nbsp; Items Library</h2>
+            </div>
+        </div>
+
+		<!-- Filters -->
+	    <div class="row mb30 mt30">
+
+			<div class="col-md-4">
+				<input type="search" id="jetsSearch" class="form-control" placeholder="Search">
+				<i class="fa fa-search abs t0 mt10 zindex1" style="right: 25px;"></i>
+				<script>
+					$("#jetsSearch").on("keypress keyup", function(){
+						
+		                $("label[data-filter].active").click();
+
+						setTimeout(function(){
+		                	$("label[data-filter].active").click();
+		                },100);
+
+					});
+				</script>
+			</div>
+	        <div class="col-md-8">
+				
+				<div class="filters btn-group" data-toggle="buttons">
+				    <label data-filter="" class="btn btn-primary active">
+				        <input type="radio" name="options" id="option1"> All
+				    </label>
+				    <label data-filter="c1" class="btn btn-primary">
+				        <input type="radio" name="options"> Category 1
+				    </label>
+				    <label data-filter="c2" class="btn btn-primary">
+				        <input type="radio" name="options"> Category 2
+				    </label>
+				    <label data-filter="c3" class="btn btn-primary">
+				        <input type="radio" name="options"> Category 3
+				    </label>
+				</div>
+				
+	        </div>
+	    </div>
+	</div>
+
+
+	<div class="container">
+	    <div class="row">
+	    	<div class="col-md-12">
+	    		<div class="row">
+			    	<div id="grid-wrapper">
+				        <div class="c1 c2 c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/520/300/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Item 01 or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c2 c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/600/400/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Item 02 or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c2 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/500/600/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Item 03 or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/550/350/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Item 04 or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c2 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/500/700/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Template or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c2 c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/610/650/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Template or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c2 c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/520/680/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Template or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/550/320/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Template or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/530/380/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Template or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/600/400/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Item 06 or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c1 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/540/600/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Template or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/550/350/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Template or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c1 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/560/700/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Template or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c2 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/670/650/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Template or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c1 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/580/680/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Template or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				        <div class="c1 c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<a href="#">
+				        		<img src="https://placeimg.com/560/320/any" class="img-responsive">
+				        	</a>
+	        				<a href="#">
+	        					<h4>Template or Page name even with a large name</h4>
+	        				</a>
+	        				<p class="mb20"><small>A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</small></p>
+							<div class="btn-group btn-group-sm">
+								<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+								<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+								<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+							</div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+	    </div>
+	</div>
+</body>
+</html>

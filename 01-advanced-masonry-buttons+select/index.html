@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Items Library</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><!-- Viewport Restrict Zoom -->
+
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.extend.css">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+
+	<style>
+		.img-responsive{ width: 100%; }
+		.mt30{ margin-top: 30px; }
+		.mb30{ margin-bottom: 30px; }
+		.grid-item{ margin-bottom: 30px; }
+	</style>
+
+
+	<!-- Masonry -->
+	<script type="text/javascript" src="js/masonry-filters/javascripts/imagesloaded.js"></script>
+	<script type="text/javascript" src="js/masonry-filters/javascripts/masonry-3.1.4.js"></script>
+	<script type="text/javascript" src="js/masonry-filters/javascripts/masonry.filter.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var self = $("#grid-wrapper");
+            self.imagesLoaded(function () {
+                self.masonry({
+                    gutterWidth: 15,
+                    isAnimated: true,
+                    itemSelector: ".grid-item"
+                });
+            });
+
+            $(".filters .btn").click(function(e) {
+                e.preventDefault();
+
+                var filter = $(this).attr("data-filter");
+
+                self.masonryFilter({
+                    filter: function () {
+                        if (!filter) return true;
+                        return $(this).attr("data-filter") == filter;
+                    }
+                });
+            });
+        });
+    </script>
+
+	<script>
+	    $(function(){
+	    	//Select Filter
+	        $("#grid-select-filter").on("change keyup", function(){
+	        	var filter = $(this, "option:selected").val();	        	
+                $("#grid-wrapper").masonryFilter({
+                    filter: function () {
+                        if (!filter) return true;
+                        return $(this).hasClass(filter);
+                    }
+                });
+	        });
+	        //Buttons Filter
+            $(".filters .btn").click(function(e) {
+                e.preventDefault();
+                var filter = $(this).attr("data-filter");
+                console.log(filter);
+                $("#grid-wrapper").masonryFilter({
+                    filter: function () {
+                        if (!filter) return true;
+                        return $(this).hasClass(filter);
+                    }
+                });
+            });
+	    });
+	</script>
+
+</head>
+<body>
+	<div class="container">
+	    <div class="row mb30 mt30">
+	        <div class="col-md-6">
+	        	
+	        	<select id="grid-select-filter">
+	        		<option value="">All</option>
+	        		<option value="c1">Category 1</option>
+	        		<option value="c2">Category 2</option>
+	        		<option value="c3">Category 3</option>
+	        	</select>
+
+	        </div>
+	        <div class="col-md-6">
+				
+				<div class="filters btn-group" data-toggle="buttons">
+				    <label data-filter="" class="btn btn-primary active">
+				        <input type="radio" name="options" id="option1"> All
+				    </label>
+				    <label data-filter="c1" class="btn btn-primary">
+				        <input type="radio" name="options"> Category 1
+				    </label>
+				    <label data-filter="c2" class="btn btn-primary">
+				        <input type="radio" name="options"> Category 2
+				    </label>
+				    <label data-filter="c3" class="btn btn-primary">
+				        <input type="radio" name="options"> Category 3
+				    </label>
+				</div>
+				
+	        </div>
+	    </div>
+	</div>
+
+	<div class="container mb30">
+	    <div class="row">
+	        <div class="col-md-12">
+	        	<img src="http://placehold.it/1200x100" class="img-responsive">
+	        </div>
+	    </div>
+	</div>
+
+	<div class="container">
+	    <div class="row">
+	    	<div class="col-md-12">
+	    		<div class="row">
+			    	<div id="grid-wrapper">
+				        <div class="c1 c2 c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/520/300/any" class="img-responsive">
+				        </div>
+				        <div class="c2 c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/600/400/any" class="img-responsive">
+				        </div>
+				        <div class="c2 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/500/600/any" class="img-responsive">
+				        </div>
+				        <div class="c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/550/350/any" class="img-responsive">
+				        </div>
+				        <div class="c2 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/500/700/any" class="img-responsive">
+				        </div>
+				        <div class="c2 c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/610/650/any" class="img-responsive">
+				        </div>
+				        <div class="c2 c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/520/680/any" class="img-responsive">
+				        </div>
+				        <div class="c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/550/320/any" class="img-responsive">
+				        </div>
+				        <div class="c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/530/380/any" class="img-responsive">
+				        </div>
+				        <div class="c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/600/400/any" class="img-responsive">
+				        </div>
+				        <div class="c1 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/540/600/any" class="img-responsive">
+				        </div>
+				        <div class="grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/550/350/any" class="img-responsive">
+				        </div>
+				        <div class="c1 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/560/700/any" class="img-responsive">
+				        </div>
+				        <div class="c2 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/670/650/any" class="img-responsive">
+				        </div>
+				        <div class="c1 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/580/680/any" class="img-responsive">
+				        </div>
+				        <div class="c1 c3 grid-item col-xs-12 col-xsl-4 col-sm-4 col-md-3">
+				        	<img src="https://placeimg.com/560/320/any" class="img-responsive">
+				        </div>
+				    </div>
+				</div>
+			</div>
+	    </div>
+	</div>
+</body>
+</html>

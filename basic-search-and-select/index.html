@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Items Library</title>
+	
+	<!-- jQuery -->
+	<script src="vendors/jquery/jquery-1.11.2.min.js"></script>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
+	<script src="vendors/bootstrap/bootstrap.min.js"></script>
+
+	<!-- Icons: FontAwesome -->
+	<link rel="stylesheet" href="icons/font-awesome/css/font-awesome.min.css">
+
+	<!-- Utilities -->
+	<link rel="stylesheet" href="css/utilities.css">
+
+	<!-- Search: Jets -->
+	<script src="vendors/jets/jets.js"></script>
+	<script>
+	    $(function(){
+		var jets = new Jets({
+		  addImportant: true,
+		  searchTag: '#jetsSearch',
+		  contentTag: '#jetsContent',
+	          diacriticsMap: { //Agregar soporte para acentos
+			  a: "ÁÀÃÂÄáàãâä",
+			  e: "ÉÈÊËéèêë",
+			  i: "ÍÌÎÏíìîï",
+			  o: "ÓÒÕÔÖóòõôö",
+			  u: "ÚÙÛÜúùûü"
+	          }
+		});
+	});
+	</script>
+
+	<style>
+		body{
+			font-size: 14px;
+		}
+	</style>
+
+</head>
+<body>
+	
+	<div class="container-fluid">
+	    <div class="container">
+
+	    	<!-- Title -->
+	        <div class="row mb30">
+	            <div class="col-md-12">
+	            	<h2><img src="images/logo.png" style="max-width: 160px;"> &nbsp; Items Library</h2>
+	            </div>
+	        </div>
+
+			<!-- Filters -->
+	        <div class="row mb60">
+	        	<div class="col-md-12">
+	        		<div class="row">
+	        			<div class="col-md-4">
+	        				<input type="search" id="jetsSearch" class="form-control" placeholder="Search">
+	        				<i class="fa fa-search abs t0 mt10 zindex1" style="right: 25px;"></i>
+	        			</div>
+	        			<div class="col-md-8">
+				        	<select id="grid-select-filter" class="form-control">
+				        		<option value="filter-all">All</option>
+				        		<option value="filter02">Filter 2</option>
+				        		<option value="filter03">Filter 3</option>
+				        	</select>
+							<script>
+								$(function(){
+							    	//Select Filter
+							        $("#grid-select-filter").on("change keyup", function(){
+							        	var filter = $(this, "option:selected").val();	        	
+						                $(".item-row").hide();
+						                $(".item-row."+filter).show();
+							        });
+								});
+
+								$("#jetsSearch").on("keypress keyup", function(){
+					                $("#grid-select-filter").change();
+					                setTimeout(function(){
+										$("#grid-select-filter").change();
+					                },100);
+								});
+							</script>
+	        				<!--
+							<div id="main-filters" class="btn-group">
+								<button type="button" data-filter-class="filter-all" class="filter-button btn btn-primary active">All Templates</button>
+								<button type="button" data-filter-class="filter02" class="filter-button btn btn-primary">Full Pages</button>
+								<button type="button" data-filter-class="filter03" class="filter-button btn btn-primary">Single Components</button>
+							</div>
+							<script>
+							    $(function(){
+							        $("#main-filters").on("click", "button", function(){
+							        	$("#main-filters button").removeClass('active');
+							        	$(this).addClass('active');
+							        });
+
+							        $(".filter-button").click(function(){
+							        	var filter_class = $(this).attr('data-filter-class');
+							        	
+							        	if( filter_class == 'filter-all' ){
+							        		$(".item-row").show();
+							        	}else{
+								        	$(".item-row").hide();
+								        	$(".item-row."+filter_class).show();
+							        	}
+							        	
+							        });
+							    });
+							</script>
+							-->
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
+
+	        <!-- Catalog -->
+	        <div class="row mb30">
+	        	<div class="col-md-12">
+	        		<div class="row">
+						
+						<div id="jetsContent">
+
+			        			<!-- Item -->
+			        			<div class="item-row col-md-3 text-center mb40 filter-all">
+			        				<a href="#">
+			        					<img class="img-responsive mb20" src="http://placehold.it/500x400">
+			        				</a>
+			        				<a href="#">
+			        					<h4 class="ellipsis" title="Title or title or text even with a large length">Item or title or text even with a large length</h4>
+			        				</a>
+			        				<p class="mb20">A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									<div class="btn-group btn-group-sm">
+										<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+										<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+										<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+									</div>
+			        			</div>
+			        			<!-- End Item -->
+
+			        			<!-- Item -->
+			        			<div class="item-row col-md-3 text-center mb40 filter-all">
+			        				<a href="#">
+			        					<img class="img-responsive mb20" src="http://placehold.it/500x400">
+			        				</a>
+			        				<a href="#">
+			        					<h4 class="ellipsis" title="Title or title or text even with a large length">Item or title or text even with a large length</h4>
+			        				</a>
+			        				<p class="mb20">A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									<div class="btn-group btn-group-sm">
+										<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+										<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+										<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+									</div>
+			        			</div>
+			        			<!-- End Item -->
+
+			        			<!-- Item -->
+			        			<div class="item-row col-md-3 text-center mb40 filter-all">
+			        				<a href="#">
+			        					<img class="img-responsive mb20" src="http://placehold.it/500x400">
+			        				</a>
+			        				<a href="#">
+			        					<h4 class="ellipsis" title="Title or title or text even with a large length">Item or title or text even with a large length</h4>
+			        				</a>
+			        				<p class="mb20">A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									<div class="btn-group btn-group-sm">
+										<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+										<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+										<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+									</div>
+			        			</div>
+			        			<!-- End Item -->
+
+			        			<!-- Item -->
+			        			<div class="item-row col-md-3 text-center mb40 filter-all">
+			        				<a href="#">
+			        					<img class="img-responsive mb20" src="http://placehold.it/500x400">
+			        				</a>
+			        				<a href="#">
+			        					<h4 class="ellipsis" title="Title or title or text even with a large length">Item or title or text even with a large length</h4>
+			        				</a>
+			        				<p class="mb20">A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									<div class="btn-group btn-group-sm">
+										<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+										<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Files</button>
+										<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+									</div>
+			        			</div>
+			        			<!-- End Item -->
+
+
+			        			<!-- Item -->
+			        			<div class="item-row col-md-3 text-center mb40 filter-all filter02">
+			        				<a href="#">
+			        					<img class="img-responsive mb20" src="http://placehold.it/500x400">
+			        				</a>
+			        				<a href="#">
+			        					<h4 class="ellipsis" title="Template or Page name even with a large name">Filter 02</h4>
+			        				</a>
+			        				<p class="mb20">A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									<div class="btn-group btn-group-sm">
+										<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+										<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Template JSON</button>
+										<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+									</div>
+			        			</div>
+			        			<!-- End Item -->
+
+			        			<!-- Item -->
+			        			<div class="item-row col-md-3 text-center mb40 filter-all filter03">
+			        				<a href="#">
+			        					<img class="img-responsive mb20" src="http://placehold.it/500x400">
+			        				</a>
+			        				<a href="#">
+			        					<h4 class="ellipsis" title="Template or Page name even with a large name">Filter 03</h4>
+			        				</a>
+			        				<p class="mb20">A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									<div class="btn-group btn-group-sm">
+										<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+										<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Template JSON</button>
+										<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+									</div>
+			        			</div>
+			        			<!-- End Item -->
+
+			        			<!-- Item -->
+			        			<div class="item-row col-md-3 text-center mb40 filter-all filter02">
+			        				<a href="#">
+			        					<img class="img-responsive mb20" src="http://placehold.it/500x400">
+			        				</a>
+			        				<a href="#">
+			        					<h4 class="ellipsis" title="Template or Page name even with a large name">Filter02</h4>
+			        				</a>
+			        				<p class="mb20">A little description or keywords for the template or page lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									<div class="btn-group btn-group-sm">
+										<button type="button" class="btn btn-default" title="View a demo of this template"><i class="fa fa-external-link"></i> Demo</button>
+										<button type="button" class="btn btn-default" title="Download the importable template"><i class="fa fa-download"></i> Template JSON</button>
+										<button type="button" class="btn btn-default" title="Download assets like images and other resources for this template or page"><i class="fa fa-download"></i> Assets</button>
+									</div>
+			        			</div>
+			        			<!-- End Item -->
+						</div>
+
+	        		</div>
+	        	</div>
+	        </div>
+
+	    </div>
+	</div>
+
+</body>
+</html>
